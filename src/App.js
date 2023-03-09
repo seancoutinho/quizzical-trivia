@@ -1,40 +1,40 @@
-import React, { useState, useEffect } from "react";
 import "./App.css";
-import WelcomeScreen from "./components/WelcomeScreen";
+
+import React, { useEffect, useState } from "react";
+
 import Quiz from "./components/Quiz";
+import WelcomeScreen from "./components/WelcomeScreen";
 import axios from "axios";
 
 function App() {
   const [quizStart, setQuizStart] = useState(false);
-  const [data, setData] = useState("");
-  const [questions, setQuestions] = useState([])
+  const [questionsData, setQuestionsData] = useState("");
 
-  useEffect(() => {
+  function startGame() {
+    setQuizStart(true);
+  }
+
+  const getData = () => {
     axios
       .get(
         "https://opentdb.com/api.php?amount=5&category=18&difficulty=medium&type=multiple"
       )
       .then((response) => {
-        const data = response.data.results;
-        localStorage.setItem("DATA", JSON.stringify(data));
+        setQuestionsData(response.data.results);
       });
-  }, []);
+  };
 
   useEffect(() => {
-    setData(JSON.parse(localStorage.getItem("DATA")))
-  }, [])
-
-  console.log(data);
-  function startGame() {
-    setQuizStart(true);
-    setQuestions(data.map(dataPoint => {
-      return dataPoint.question
-    }))
-    }
+    getData();
+  }, []);
 
   return (
     <div className="App">
-      {quizStart ? <Quiz questions={questions}/> : <WelcomeScreen startGame={startGame} />}
+      {quizStart ? (
+        <Quiz questions={questionsData} />
+      ) : (
+        <WelcomeScreen startGame={startGame} />
+      )}
     </div>
   );
 }
