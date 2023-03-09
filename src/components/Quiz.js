@@ -1,14 +1,24 @@
-import React from 'react'
-import Question from "./Question"
+import Question from "./Question";
+import React from "react";
 
 export default function Quiz(props) {
-    return (
-        <div className='quiz-page'>
-            <Question question={props.questions[0]} options={props.options}/>
-            <Question question={props.questions[1]} options={props.options}/>
-            <Question question={props.questions[2]} options={props.options}/>
-            <Question question={props.questions[3]} options={props.options}/>
-            <Question question={props.questions[4]} options={props.options}/>
-        </div>
-    )
+  const Questions = props.questions;
+  return (
+    <div className="quiz-page">
+      <h1>Questions</h1>
+      {Questions?.map((question, index) => {
+        return (
+          <div key={index}>
+            <Question
+              Number={index}
+              question={question.question}
+              answer={question.correct_answer}
+              wrongAnswers={question.incorrect_answers}
+              difficulty={question.difficulty}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
 }
