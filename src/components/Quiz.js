@@ -5,7 +5,7 @@ export default function Quiz(props) {
   const Questions = props.questions;
   return (
     <div className="quiz-page">
-      <h1>Questions</h1>
+      <h1>QUIZ</h1>
       {Questions?.map((question, index) => {
         return (
           <div key={index}>

@@ -9,7 +9,6 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 200px;
   text-align: center;
   font-size: 18px;
   gap: 200px;
@@ -24,6 +23,26 @@ body {
   background-color: #4D5B9E;
   color: white;
   cursor: pointer;
+}
+
+.btn-option{
+  height: 30px;
+  width: 120px;
+  cursor: pointer;
+  color: 293264;
+  background-color: transparent;
+  border-radius: 9999px;
+  margin-right: 12px;
+  max-width: 100%;
+}
+
+.btn-option:hover {
+  background-color: chocolate;
+  transition: background-color 0.5s ease;
+}
+
+.question {
+  font-size:9px;
 }
 
 .instructions {
