@@ -19,6 +19,8 @@ export default function Question(props) {
     })
   }
 
+
+
   console.log(chosenAnswers);
 
   const AnswerOptions = shuffle([answer, ...wrongAnswers]);

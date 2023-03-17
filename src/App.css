@@ -41,6 +41,10 @@ body {
   transition: background-color 0.5s ease;
 }
 
+.clicked {
+  background-color: orangered;
+}
+
 .question {
   font-size:9px;
 }
